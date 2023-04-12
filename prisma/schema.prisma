@@ -7,9 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model produto {
+model Produto {
   id          String @id @default(uuid())
-  name        String
+  name        String @unique
   description String
   quantidade  Int
+
+  @@map("produto")
 }
