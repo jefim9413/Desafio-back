@@ -13,14 +13,14 @@ class AtualizarProdutoUseCase {
     description,
     quantidade,
   }: AtualizarProdutoRequest) {
-    // const produtoExists = await prisma.produto.findFirst({
-    //   where: {
-    //     id,
-    //   },
-    // })
-    // if (!produtoExists) {
-    //   throw new Error('Produto não existe')
-    // }
+    const produtoExists = await prisma.produto.findFirst({
+      where: {
+        id,
+      },
+    })
+    if (!produtoExists) {
+      throw new Error('Produto não existe')
+    }
 
     const result = await prisma.produto.update({
       where: { id },

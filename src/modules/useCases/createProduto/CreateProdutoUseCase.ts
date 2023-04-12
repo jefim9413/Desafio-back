@@ -6,14 +6,14 @@ interface CreateProdutoRequest {
 }
 class CreateProdutoUseCase {
   async execute({ name, description, quantidade }: CreateProdutoRequest) {
-    // const produtoExists = await prisma.produto.findUnique({
-    //   where: {
-    //     name,
-    //   },
-    // })
-    // if (produtoExists) {
-    //   throw new Error('Produto já existe')
-    // }
+    const produtoExists = await prisma.produto.findUnique({
+      where: {
+        name,
+      },
+    })
+    if (produtoExists) {
+      throw new Error('Produto já existe')
+    }
 
     const produto = await prisma.produto.create({
       data: {
