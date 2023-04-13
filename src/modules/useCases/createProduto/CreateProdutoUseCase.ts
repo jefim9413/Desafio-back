@@ -6,7 +6,7 @@ interface CreateProdutoRequest {
 }
 class CreateProdutoUseCase {
   async execute({ name, description, quantidade }: CreateProdutoRequest) {
-    const produtoExists = await prisma.produto.findUnique({
+    const produtoExists = await prisma.produto.findFirst({
       where: {
         name,
       },
